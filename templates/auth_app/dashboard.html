@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gestión Ventas Bazar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .welcome-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 p-4">
+                <!-- Welcome Header -->
+                <div class="welcome-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h2>¡Bienvenido, {{ user.get_full_name|default:user.username }}!</h2>
+                            <p class="mb-0">Sistema de Gestión de Ventas Bazar</p>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-store fa-3x opacity-75"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role-based redirect -->
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h4>Redirigiendo según tu rol...</h4>
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Cargando...</span>
+                                </div>
+                                <p class="mt-3">Serás redirigido automáticamente a tu panel correspondiente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Redirigir automáticamente según el rol
+        setTimeout(function() {
+            {% if user.es_jefe_ventas %}
+                window.location.href = "{% url 'auth_app:jefe_ventas_dashboard' %}";
+            {% elif user.es_vendedor %}
+                window.location.href = "{% url 'auth_app:vendedor_dashboard' %}";
+            {% else %}
+                window.location.href = "{% url 'auth_app:login' %}";
+            {% endif %}
+        }, 2000);
+    </script>
+</body>
+</html>

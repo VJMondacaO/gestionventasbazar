@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ venta.get_tipo_documento_display }} {{ venta.numero_venta }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: white;
+        }
+        .documento {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid #333;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .empresa-info {
+            margin-bottom: 20px;
+        }
+        .cliente-info {
+            margin-bottom: 20px;
+        }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .items-table th,
+        .items-table td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+        .items-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .totales {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+        .total-final {
+            font-weight: bold;
+            font-size: 1.2em;
+            border-top: 2px solid #333;
+            padding-top: 10px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+        }
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="documento">
+        <!-- Header del Documento -->
+        <div class="header">
+            <h1>{{ venta.get_tipo_documento_display }}</h1>
+            <h2>N° {{ venta.numero_venta }}</h2>
+            <p><strong>Fecha:</strong> {{ venta.fecha_venta|date:"d/m/Y H:i" }}</p>
+        </div>
+
+        <!-- Información de la Empresa -->
+        <div class="empresa-info">
+            <h3>BAZAR CHILE</h3>
+            <p><strong>RUT:</strong> 76.123.456-7</p>
+            <p><strong>Dirección:</strong> Av. Principal 123, Santiago</p>
+            <p><strong>Teléfono:</strong> +56 2 2345 6789</p>
+            <p><strong>Email:</strong> ventas@bazarchile.cl</p>
+        </div>
+
+        <!-- Información del Cliente -->
+        <div class="cliente-info">
+            <h3>Cliente:</h3>
+            {% if venta.cliente %}
+                <p><strong>Nombre:</strong> {{ venta.cliente.nombre }}</p>
+                <p><strong>RUT:</strong> {{ venta.cliente.rut }}</p>
+                <p><strong>Dirección:</strong> {{ venta.cliente.direccion }}, {{ venta.cliente.comuna }}</p>
+            {% else %}
+                <p><strong>Cliente General</strong></p>
+                {% if venta.rut_cliente %}
+                    <p><strong>RUT:</strong> {{ venta.rut_cliente }}</p>
+                {% endif %}
+                {% if venta.direccion_cliente %}
+                    <p><strong>Dirección:</strong> {{ venta.direccion_cliente }}, {{ venta.comuna_cliente }}</p>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <!-- Items de la Venta -->
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unit.</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.producto.id }}</td>
+                    <td>{{ item.producto.nombre }}</td>
+                    <td>{{ item.cantidad }}</td>
+                    <td>${{ item.precio_unitario|floatformat:0 }}</td>
+                    <td>${{ item.subtotal|floatformat:0 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Totales -->
+        <div class="totales">
+            <div class="total-line">
+                <span>Subtotal:</span>
+                <span>${{ venta.subtotal|floatformat:0 }} CLP</span>
+            </div>
+            <div class="total-line">
+                <span>IVA (19%):</span>
+                <span>${{ venta.iva|floatformat:0 }} CLP</span>
+            </div>
+            <div class="total-line total-final">
+                <span>TOTAL:</span>
+                <span>${{ venta.total|floatformat:0 }} CLP</span>
+            </div>
+        </div>
+
+        <!-- Información Adicional -->
+        <div class="footer">
+            <p><strong>Forma de Pago:</strong> {{ venta.get_forma_pago_display }}</p>
+            <p><strong>Vendedor:</strong> {{ venta.vendedor.get_full_name|default:venta.vendedor.username }}</p>
+            {% if venta.observaciones %}
+                <p><strong>Observaciones:</strong> {{ venta.observaciones }}</p>
+            {% endif %}
+            <hr>
+            <p><em>Documento generado el {{ "now"|date:"d/m/Y H:i" }}</em></p>
+            <p><em>Gracias por su compra en Bazar Chile</em></p>
+        </div>
+    </div>
+
+    <!-- Botones de Acción (no se imprimen) -->
+    <div class="no-print" style="text-align: center; margin-top: 20px;">
+        <button onclick="window.print()" style="padding: 10px 20px; margin: 5px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            🖨️ Imprimir
+        </button>
+        <a href="{% url 'ventas_app:detalle_venta' venta.id %}" style="padding: 10px 20px; margin: 5px; background: #6c757d; color: white; text-decoration: none; border-radius: 5px;">
+            ← Volver
+        </a>
+    </div>
+</body>
+</html>

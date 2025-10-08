@@ -1,5 +1,5 @@
 """
-WSGI config for proyectoVerduleriaVictorMondaca project.
+WSGI config for gestionVentasBazar project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

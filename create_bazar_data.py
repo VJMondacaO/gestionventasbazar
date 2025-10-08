@@ -19,29 +19,29 @@ from apps.ventas_app.models import Venta, ItemVenta, ControlDia
 
 # Productos típicos de bazar en Chile
 PRODUCTOS_BAZAR_CHILE = [
-    # Frutas
-    ('Manzanas Rojas', 'Manzanas frescas de temporada', 1200, 50, 'Frutas', 'disponible', 'Proveedor Norte'),
-    ('Peras', 'Peras jugosas y dulces', 1500, 30, 'Frutas', 'disponible', 'Proveedor Norte'),
-    ('Bananas', 'Bananas maduras y frescas', 800, 40, 'Frutas', 'disponible', 'Proveedor Norte'),
-    ('Naranjas', 'Naranjas de jugo', 1000, 35, 'Frutas', 'disponible', 'Proveedor Norte'),
-    ('Limones', 'Limones ácidos', 600, 25, 'Frutas', 'disponible', 'Proveedor Norte'),
-    ('Uvas', 'Uvas de mesa', 2000, 20, 'Frutas', 'disponible', 'Proveedor Norte'),
-    ('Duraznos', 'Duraznos frescos', 1800, 15, 'Frutas', 'disponible', 'Proveedor Norte'),
-    ('Ciruelas', 'Ciruelas maduras', 1600, 18, 'Frutas', 'disponible', 'Proveedor Norte'),
-    ('Kiwis', 'Kiwis importados', 2500, 12, 'Frutas', 'disponible', 'Proveedor Norte'),
-    ('Frutillas', 'Frutillas frescas', 3000, 8, 'Frutas', 'disponible', 'Proveedor Norte'),
+    # Bebidas
+    ('Coca Cola 500ml', 'Bebida gaseosa', 1200, 50, 'Bebidas', 'disponible', 'Proveedor Norte'),
+    ('Agua Mineral 1L', 'Agua purificada', 800, 30, 'Bebidas', 'disponible', 'Proveedor Norte'),
+    ('Jugo de Naranja 1L', 'Jugo natural', 1000, 40, 'Bebidas', 'disponible', 'Proveedor Norte'),
+    ('Cerveza 350ml', 'Cerveza nacional', 1500, 25, 'Bebidas', 'disponible', 'Proveedor Norte'),
+    ('Vino Tinto 750ml', 'Vino de mesa', 3000, 15, 'Bebidas', 'disponible', 'Proveedor Norte'),
+    ('Energizante 250ml', 'Bebida energética', 2000, 20, 'Bebidas', 'disponible', 'Proveedor Norte'),
+    ('Té en Bolsitas', 'Té negro', 500, 30, 'Bebidas', 'disponible', 'Proveedor Norte'),
+    ('Café Instantáneo', 'Café soluble', 2500, 18, 'Bebidas', 'disponible', 'Proveedor Norte'),
+    ('Chocolate en Polvo', 'Cacao en polvo', 1800, 12, 'Bebidas', 'disponible', 'Proveedor Norte'),
+    ('Agua Saborizada', 'Agua con sabor', 1000, 25, 'Bebidas', 'disponible', 'Proveedor Norte'),
     
-    # Verduras
-    ('Tomates', 'Tomates frescos', 1800, 20, 'Verduras', 'disponible', 'Proveedor Sur'),
-    ('Lechuga', 'Lechuga fresca', 500, 15, 'Verduras', 'disponible', 'Proveedor Sur'),
-    ('Cebollas', 'Cebollas blancas', 700, 30, 'Verduras', 'disponible', 'Proveedor Sur'),
-    ('Papas', 'Papas frescas', 900, 40, 'Verduras', 'disponible', 'Proveedor Sur'),
-    ('Zanahorias', 'Zanahorias frescas', 800, 25, 'Verduras', 'disponible', 'Proveedor Sur'),
-    ('Apio', 'Apio fresco', 1200, 15, 'Verduras', 'disponible', 'Proveedor Sur'),
-    ('Pepinos', 'Pepinos frescos', 1000, 20, 'Verduras', 'disponible', 'Proveedor Sur'),
-    ('Pimientos', 'Pimientos rojos', 1500, 18, 'Verduras', 'disponible', 'Proveedor Sur'),
-    ('Brócoli', 'Brócoli fresco', 2000, 12, 'Verduras', 'disponible', 'Proveedor Sur'),
-    ('Espinacas', 'Espinacas frescas', 1800, 10, 'Verduras', 'disponible', 'Proveedor Sur'),
+    # Panadería
+    ('Pan de Molde', 'Pan blanco', 1200, 20, 'Panadería', 'disponible', 'Proveedor Sur'),
+    ('Galletas Saladas', 'Galletas de agua', 800, 15, 'Panadería', 'disponible', 'Proveedor Sur'),
+    ('Tortillas', 'Tortillas de harina', 1500, 30, 'Panadería', 'disponible', 'Proveedor Sur'),
+    ('Cereales', 'Cereales de desayuno', 2500, 25, 'Cereales', 'disponible', 'Proveedor Sur'),
+    ('Avena 500g', 'Avena natural', 1500, 20, 'Cereales', 'disponible', 'Proveedor Sur'),
+    ('Galletas Dulces', 'Galletas de chocolate', 2000, 18, 'Panadería', 'disponible', 'Proveedor Sur'),
+    ('Pan Integral', 'Pan de trigo integral', 1800, 15, 'Panadería', 'disponible', 'Proveedor Sur'),
+    ('Tostadas', 'Pan tostado', 1000, 20, 'Panadería', 'disponible', 'Proveedor Sur'),
+    ('Croissants', 'Croissants de mantequilla', 2500, 12, 'Panadería', 'disponible', 'Proveedor Sur'),
+    ('Muffins', 'Muffins de chocolate', 3000, 10, 'Panadería', 'disponible', 'Proveedor Sur'),
     
     # Granos y Cereales
     ('Arroz 1kg', 'Arroz grano largo', 1200, 20, 'Granos', 'disponible', 'Proveedor Central'),
@@ -119,13 +119,13 @@ PRODUCTOS_BAZAR_CHILE = [
     ('Atún', 'Atún en lata', 2000, 15, 'Conservas', 'disponible', 'Proveedor Sur'),
     ('Aceitunas', 'Aceitunas verdes', 1500, 20, 'Conservas', 'disponible', 'Proveedor Sur'),
     ('Sardinas', 'Sardinas en lata', 1200, 12, 'Conservas', 'disponible', 'Proveedor Sur'),
-    ('Duraznos', 'Duraznos en conserva', 1800, 10, 'Conservas', 'disponible', 'Proveedor Sur'),
-    ('Tomates', 'Tomates en conserva', 1000, 15, 'Conservas', 'disponible', 'Proveedor Sur'),
+    ('Piña en Lata', 'Piña en conserva', 1800, 10, 'Conservas', 'disponible', 'Proveedor Sur'),
+    ('Puré de Tomate', 'Puré de tomate en lata', 1000, 15, 'Conservas', 'disponible', 'Proveedor Sur'),
     ('Champiñones', 'Champiñones en lata', 1600, 8, 'Conservas', 'disponible', 'Proveedor Sur'),
     ('Palmitos', 'Palmitos en conserva', 2500, 6, 'Conservas', 'disponible', 'Proveedor Sur'),
     ('Alcachofas', 'Alcachofas en conserva', 2000, 5, 'Conservas', 'disponible', 'Proveedor Sur'),
     ('Espárragos', 'Espárragos en conserva', 2200, 4, 'Conservas', 'disponible', 'Proveedor Sur'),
-    ('Pimientos', 'Pimientos en conserva', 1500, 8, 'Conservas', 'disponible', 'Proveedor Sur'),
+    ('Salsa de Tomate', 'Salsa de tomate en lata', 1500, 8, 'Conservas', 'disponible', 'Proveedor Sur'),
     
     # Dulces y Snacks
     ('Chocolate', 'Chocolate negro', 2000, 15, 'Dulces', 'disponible', 'Proveedor Central'),

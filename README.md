@@ -74,7 +74,7 @@ pip install django pymysql
 ```
 
 ### 3. Configurar base de datos
-Editar `proyectoVerduleriaVictorMondaca/settings.py`:
+Editar `gestionVentasBazar/settings.py`:
 ```python
 DATABASES = {
     'default': {

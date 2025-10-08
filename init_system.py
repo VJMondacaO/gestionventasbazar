@@ -8,7 +8,7 @@ import django
 from decimal import Decimal
 
 # Configurar Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proyectoVerduleriaVictorMondaca.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gestionVentasBazar.settings')
 django.setup()
 
 from apps.auth_app.models import Usuario
@@ -62,16 +62,16 @@ def init_system():
     print("\n📦 Creando productos de ejemplo...")
     
     productos_data = [
-        {'nombre': 'Manzanas', 'precio': Decimal('1200'), 'stock': 50, 'categoria': 'Frutas'},
-        {'nombre': 'Plátanos', 'precio': Decimal('800'), 'stock': 30, 'categoria': 'Frutas'},
-        {'nombre': 'Naranjas', 'precio': Decimal('1000'), 'stock': 40, 'categoria': 'Frutas'},
-        {'nombre': 'Lechuga', 'precio': Decimal('600'), 'stock': 25, 'categoria': 'Verduras'},
-        {'nombre': 'Tomates', 'precio': Decimal('1500'), 'stock': 35, 'categoria': 'Verduras'},
-        {'nombre': 'Cebollas', 'precio': Decimal('900'), 'stock': 20, 'categoria': 'Verduras'},
-        {'nombre': 'Papas', 'precio': Decimal('700'), 'stock': 60, 'categoria': 'Verduras'},
-        {'nombre': 'Zanahorias', 'precio': Decimal('800'), 'stock': 45, 'categoria': 'Verduras'},
-        {'nombre': 'Pan', 'precio': Decimal('1200'), 'stock': 30, 'categoria': 'Panadería'},
-        {'nombre': 'Leche', 'precio': Decimal('1000'), 'stock': 25, 'categoria': 'Lácteos'},
+        {'nombre': 'Coca Cola 500ml', 'precio': Decimal('1200'), 'stock': 50, 'categoria': 'Bebidas'},
+        {'nombre': 'Agua Mineral 1L', 'precio': Decimal('800'), 'stock': 30, 'categoria': 'Bebidas'},
+        {'nombre': 'Jugo de Naranja 1L', 'precio': Decimal('1000'), 'stock': 40, 'categoria': 'Bebidas'},
+        {'nombre': 'Pan de Molde', 'precio': Decimal('1200'), 'stock': 30, 'categoria': 'Panadería'},
+        {'nombre': 'Leche Entera 1L', 'precio': Decimal('1000'), 'stock': 25, 'categoria': 'Lácteos'},
+        {'nombre': 'Yogurt Natural', 'precio': Decimal('800'), 'stock': 20, 'categoria': 'Lácteos'},
+        {'nombre': 'Queso Gouda 200g', 'precio': Decimal('2500'), 'stock': 15, 'categoria': 'Lácteos'},
+        {'nombre': 'Huevos Docena', 'precio': Decimal('1500'), 'stock': 40, 'categoria': 'Huevos'},
+        {'nombre': 'Arroz 1kg', 'precio': Decimal('1200'), 'stock': 25, 'categoria': 'Granos'},
+        {'nombre': 'Fideos Espagueti 500g', 'precio': Decimal('800'), 'stock': 35, 'categoria': 'Pastas'},
     ]
     
     for producto_data in productos_data:

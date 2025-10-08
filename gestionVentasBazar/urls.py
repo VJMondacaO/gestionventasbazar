@@ -1,5 +1,5 @@
 """
-URL configuration for proyectoVerduleriaVictorMondaca project.
+URL configuration for gestionVentasBazar project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/

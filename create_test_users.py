@@ -7,7 +7,7 @@ import sys
 import django
 
 # Configurar Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proyectoVerduleriaVictorMondaca.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gestionVentasBazar.settings')
 django.setup()
 
 from apps.auth_app.models import Usuario
